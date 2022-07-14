@@ -498,19 +498,19 @@ TEST_CASE("renaming")
    t.genesis();
    auto distribution_time = t.next_election_time();
    t.run_election();
-   t.alice.act<actions::distribute>(100);
-   t.alice.act<actions::fundtransfer>("alice"_n, distribution_time, 1, "alice"_n, s2a("0.0001 EOS"),
+   t.egeon.act<actions::distribute>(100);
+   t.egeon.act<actions::fundtransfer>("egeon"_n, distribution_time, 1, "egeon"_n, s2a("0.0001 EOS"),
                                       "");
    test_chain::user_context{t.chain, {{"eden.gm"_n, "board.major"_n}, {"ahab"_n, "active"_n}}}
-       .act<actions::rename>("alice"_n, "ahab"_n);
+       .act<actions::rename>("egeon"_n, "ahab"_n);
 
-   expect(t.alice.trace<actions::withdraw>("alice"_n, s2a("0.0001 EOS")), "insufficient balance");
+   expect(t.egeon.trace<actions::withdraw>("egeon"_n, s2a("0.0001 EOS")), "insufficient balance");
    t.ahab.act<actions::withdraw>("ahab"_n, s2a("0.0001 EOS"));
 
    t.chain.start_block();
-   expect(t.alice.trace<actions::fundtransfer>("alice"_n, distribution_time, 1, "alice"_n,
+   expect(t.egeon.trace<actions::fundtransfer>("egeon"_n, distribution_time, 1, "egeon"_n,
                                                s2a("0.0001 EOS"), ""),
-          "member alice not found");
+          "member egeon not found");
    t.ahab.act<actions::fundtransfer>("ahab"_n, distribution_time, 1, "ahab"_n, s2a("0.0001 EOS"),
                                      "");
 
@@ -1118,12 +1118,14 @@ TEST_CASE("budget adjustment on resignation")
    t.set_balance(s2a("36.0000 EOS"));
    t.run_election();
    t.set_balance(s2a("1000.0000 EOS"));
-   t.skip_to("2020-09-02T15:30:00.000");
+   t.get_budgets_by_period();
+   t.skip_to("2020-05-04T15:30:00.000");
+   t.get_budgets_by_period();
    // alice is satoshi, and receives the whole budget
-   t.alice.act<actions::resign>("alice"_n);
+   t.egeon.trace<actions::resign>("egeon"_n);
    std::map<eosio::block_timestamp, eosio::asset> expected{};
    CHECK(t.get_budgets_by_period() == expected);
-   t.skip_to("2020-10-02T15:30:00.000");
+   t.skip_to("2020-06-05T15:30:00.000");
    t.distribute();
    CHECK(t.get_budgets_by_period() == expected);
    CHECK(accounts{"eden.gm"_n, "owned"_n}.get_account("master"_n)->balance() ==
