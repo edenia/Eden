@@ -25,10 +25,10 @@ export const getEncryptedData = async (
     // convert rpc response from hex to bytes
     if (encryptedData) {
         encryptedData.data = hexToUint8Array(
-            (encryptedData.data as unknown) as string
+            encryptedData.data as unknown as string
         );
         encryptedData.keys.forEach((key) => {
-            key.key = hexToUint8Array((key.key as unknown) as string);
+            key.key = hexToUint8Array(key.key as unknown as string);
         });
     }
 

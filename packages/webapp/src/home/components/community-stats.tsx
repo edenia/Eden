@@ -28,13 +28,11 @@ const CommunityStatsContents = () => {
         keepPreviousData: true,
     });
 
-    const {
-        data: treasuryBalance,
-        isLoading: isLoadingTreasuryBalance,
-    } = useQuery({
-        ...queryTreasuryStats,
-        keepPreviousData: true,
-    });
+    const { data: treasuryBalance, isLoading: isLoadingTreasuryBalance } =
+        useQuery({
+            ...queryTreasuryStats,
+            keepPreviousData: true,
+        });
 
     if (
         isLoadingMemberStats ||

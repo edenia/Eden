@@ -193,19 +193,22 @@ const currentElectionGlobalDataQuery = `
 }
 `;
 
-export const useCurrentGlobalElectionData = (): QueryResult<ElectionGlobalQueryData> => {
-    const query = useQuery<any>(currentElectionGlobalDataQuery);
+export const useCurrentGlobalElectionData =
+    (): QueryResult<ElectionGlobalQueryData> => {
+        const query = useQuery<any>(currentElectionGlobalDataQuery);
 
-    if (query.data) {
-        const currentElection = query.data.elections.edges?.[0]?.node;
-        if (currentElection) {
-            query.data.time = dayjs(currentElection.time);
-            query.data.rounds = mapQueriedRounds(currentElection.rounds?.edges);
+        if (query.data) {
+            const currentElection = query.data.elections.edges?.[0]?.node;
+            if (currentElection) {
+                query.data.time = dayjs(currentElection.time);
+                query.data.rounds = mapQueriedRounds(
+                    currentElection.rounds?.edges
+                );
+            }
         }
-    }
 
-    return query;
-};
+        return query;
+    };
 
 const mapQueriedRounds = (queriedRoundsEdges: any) =>
     queriedRoundsEdges?.map(({ node: roundNode }: any) => ({

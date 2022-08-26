@@ -350,9 +350,10 @@ const getParticipantsOfCompletedRounds = async (myDelegation: EdenMember[]) => {
                 queryFn
             );
 
-            const participantsMemberData = await getMemberDataFromEdenMemberList(
-                edenMembersInThisRound?.participants || []
-            );
+            const participantsMemberData =
+                await getMemberDataFromEdenMemberList(
+                    edenMembersInThisRound?.participants || []
+                );
 
             const commonDelegate = edenMembersInThisRound?.participants.find(
                 (m) => m.representative !== member.account

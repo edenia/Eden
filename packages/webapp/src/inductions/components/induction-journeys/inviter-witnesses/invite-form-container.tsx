@@ -21,10 +21,7 @@ export const InductionInviteFormContainer = ({ ualAccount }: Props) => {
     const submitTransaction = async (newInduction: any) => {
         try {
             const authorizerAccount = ualAccount.accountName;
-            const {
-                id,
-                transaction,
-            } = initializeInductionTransaction(
+            const { id, transaction } = initializeInductionTransaction(
                 authorizerAccount,
                 newInduction.invitee,
                 [newInduction.witness1, newInduction.witness2]

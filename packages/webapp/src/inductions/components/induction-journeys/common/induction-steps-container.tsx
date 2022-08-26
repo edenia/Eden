@@ -70,8 +70,7 @@ export const INVITER_INDUCTION_STEPS: Step[] = [
     {
         key: InductionStepInviter.VideoAndEndorse,
         title: "INDUCT & ENDORSE",
-        text:
-            "Record and attach induction ceremony. Inviter and witnesses endorse invitee.",
+        text: "Record and attach induction ceremony. Inviter and witnesses endorse invitee.",
     },
     {
         key: InductionStepInviter.PendingDonation,
@@ -110,8 +109,7 @@ export const GENESIS_INDUCTION_STEPS: Step[] = [
     {
         key: InductionStepGenesis.StandBy,
         title: "STAND BY",
-        text:
-            "All Genesis members must complete the process for the community to go live.",
+        text: "All Genesis members must complete the process for the community to go live.",
     },
     {
         key: InductionStepGenesis.Complete,

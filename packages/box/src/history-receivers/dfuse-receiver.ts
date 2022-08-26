@@ -132,9 +132,8 @@ export class DfuseReceiver {
 
     pushTrx(trx: JsonTrx) {
         if (this.unpushedTransactions.length) {
-            const prev = this.unpushedTransactions[
-                this.unpushedTransactions.length - 1
-            ];
+            const prev =
+                this.unpushedTransactions[this.unpushedTransactions.length - 1];
             if (trx.undo != prev.undo || trx.block.id != prev.block.id) {
                 if (prev.undo) this.storage.undoEosioNum(prev.block.num);
                 else if (prev.trace) {
@@ -269,9 +268,10 @@ export class DfuseReceiver {
                         "this may take a while before the first result comes..."
                 );
             if (this.jsonTransactions.length)
-                this.variables.cursor = this.jsonTransactions[
-                    this.jsonTransactions.length - 1
-                ].cursor;
+                this.variables.cursor =
+                    this.jsonTransactions[
+                        this.jsonTransactions.length - 1
+                    ].cursor;
             this.stream = await this.dfuseClient.graphql(
                 query,
                 this.onMessage.bind(this),

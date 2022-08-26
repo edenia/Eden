@@ -45,16 +45,13 @@ export const MeetingLink = ({
     stage,
 }: RequestMeetingLinkProps) => {
     const [ualAccount] = useUALAccount();
-    const [zoomLinkedAccount, setZoomLinkedAccount] = useZoomLinkedAccount(
-        false
-    );
+    const [zoomLinkedAccount, setZoomLinkedAccount] =
+        useZoomLinkedAccount(false);
     const [showMeetingModal, setShowMeetingModal] = useState(false);
 
     const { show: showPasswordModal } = usePasswordModal();
-    const {
-        isPasswordNotSet,
-        isPasswordSetNotPresent,
-    } = useEncryptionPassword();
+    const { isPasswordNotSet, isPasswordSetNotPresent } =
+        useEncryptionPassword();
 
     const { data: memberGroup } = useMemberGroupParticipants(
         ualAccount?.accountName,

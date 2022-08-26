@@ -60,9 +60,11 @@ const Collection = ({
     accountName: string;
     name: string;
 }) => {
-    const { data: nfts, isLoading, isError } = useMemberNFTCollection(
-        accountName
-    );
+    const {
+        data: nfts,
+        isLoading,
+        isError,
+    } = useMemberNFTCollection(accountName);
 
     if (isLoading) return <LoadingContainer />;
 
@@ -111,9 +113,11 @@ const Collectors = ({
     accountName: string;
     name: string;
 }) => {
-    const { data: collectors, isLoading, isError } = useMemberNFTCollectors(
-        accountName
-    );
+    const {
+        data: collectors,
+        isLoading,
+        isError,
+    } = useMemberNFTCollectors(accountName);
 
     if (isLoading) return <LoadingContainer />;
 

@@ -56,13 +56,12 @@ export const encryptSecretForPublishing = async (
     const encryptedMessage = await encryptMessage(sessionKey, message);
 
     const senderKey = transientKeyPair.publicKey.toString();
-    const contractFormatEncryptedKeys: EncryptedKey[] = encryptedSessionKeys.map(
-        (encryptedKey, i) => ({
+    const contractFormatEncryptedKeys: EncryptedKey[] =
+        encryptedSessionKeys.map((encryptedKey, i) => ({
             sender_key: senderKey,
             recipient_key: publicKeys[i],
             key: encryptedKey,
-        })
-    );
+        }));
 
     const publisherKey = publicKeys[0];
     const decryptedMessage = await decryptPublishedMessage(

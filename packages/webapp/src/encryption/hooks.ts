@@ -71,11 +71,8 @@ export const useEncryptionPassword = () => {
 export const usePasswordModal = () => {
     const { state, dispatch } = useGlobalStore();
     const { passwordModal } = state;
-    const {
-        isOpen,
-        resolver,
-        newPasswordIsInvalidForCurrentRound,
-    } = passwordModal;
+    const { isOpen, resolver, newPasswordIsInvalidForCurrentRound } =
+        passwordModal;
 
     const show = (newPasswordIsInvalidForCurrentRound: boolean = false) =>
         new Promise((resolve) => {

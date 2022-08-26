@@ -25,11 +25,11 @@ export const ElectionPage = () => {
     const { data: leadRepresentative } = useHeadDelegate();
 
     const { data: currentElection } = useCurrentElection();
-    const currentActiveElection = currentElection as CurrentElection_activeState;
+    const currentActiveElection =
+        currentElection as CurrentElection_activeState;
 
-    const {
-        data: participantsInCompletedRound,
-    } = useParticipantsInMyCompletedRound(targetRound);
+    const { data: participantsInCompletedRound } =
+        useParticipantsInMyCompletedRound(targetRound);
 
     const { data: voteRowForLoggedInMember } = useVoteDataRow(
         loggedInMember?.account
@@ -40,10 +40,8 @@ export const ElectionPage = () => {
         targetRound
     );
 
-    const {
-        isError: isElectionStateDataFetchError,
-        data: electionState,
-    } = useElectionState();
+    const { isError: isElectionStateDataFetchError, data: electionState } =
+        useElectionState();
 
     if (isElectionStateDataFetchError) {
         return (
@@ -55,8 +53,8 @@ export const ElectionPage = () => {
         );
     }
 
-    const electionStartDateTime = extractElectionDates(currentElection)
-        .rawStartDateTime;
+    const electionStartDateTime =
+        extractElectionDates(currentElection).rawStartDateTime;
 
     if (!loggedInMember || !currentElection) {
         return (
@@ -227,7 +225,7 @@ export const ElectionPage = () => {
                     *not* in an active election is the `electionState` is
                     `current_election_state_registration`
                 </Text>
-                {!Boolean(voteRowForLoggedInMember) && (
+                {!voteRowForLoggedInMember && (
                     <>
                         <Text className="mt-8">
                             Since we didn't find vote data for loggedInMember...

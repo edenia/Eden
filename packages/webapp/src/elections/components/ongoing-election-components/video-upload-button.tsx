@@ -9,9 +9,8 @@ interface Props {
 }
 
 export const VideoUploadButton = ({ buttonType }: Props) => {
-    const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(
-        false
-    );
+    const [isConfirmationModalOpen, setIsConfirmationModalOpen] =
+        useState(false);
 
     const onContinue = () => {
         onClose();

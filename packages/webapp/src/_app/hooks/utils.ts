@@ -83,12 +83,12 @@ export const useCountdown = ({
         hrRemaining,
         daysRemaining,
         percentDecimal,
-        hmmss: `${Boolean(hrRemaining) ? hrRemaining + ":" : ""}${padTime(
+        hmmss: `${hrRemaining ? hrRemaining + ":" : ""}${padTime(
             minRemaining
         )}:${padTime(secRemaining)}`,
-        "d-h-m": `${Boolean(daysRemaining) ? daysRemaining + "d" : ""} ${
-            Boolean(hrRemaining) ? hrRemaining + "h" : ""
-        } ${Boolean(minRemaining) ? minRemaining + "m" : ""}`.trim(),
+        "d-h-m": `${daysRemaining ? daysRemaining + "d" : ""} ${
+            hrRemaining ? hrRemaining + "h" : ""
+        } ${minRemaining ? minRemaining + "m" : ""}`.trim(),
     };
 };
 

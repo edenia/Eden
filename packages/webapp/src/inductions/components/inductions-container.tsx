@@ -22,15 +22,11 @@ interface InductionsContainerProps {
 export const InductionsContainer = ({
     ualAccount,
 }: InductionsContainerProps) => {
-    const {
-        data: isActiveCommunity,
-        isLoading: isLoadingCommunityState,
-    } = useIsCommunityActive();
+    const { data: isActiveCommunity, isLoading: isLoadingCommunityState } =
+        useIsCommunityActive();
 
-    const {
-        data: edenMember,
-        isLoading: isLoadingEdenMember,
-    } = useCurrentMember();
+    const { data: edenMember, isLoading: isLoadingEdenMember } =
+        useCurrentMember();
 
     if (isLoadingCommunityState || isLoadingEdenMember) {
         return <LoadingCard />;

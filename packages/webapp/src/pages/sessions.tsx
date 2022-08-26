@@ -46,12 +46,11 @@ export const Sessions = () => {
 
     const onRunSessionExample = async () => {
         try {
-            const {
-                transaction: inductionTrx,
-            } = initializeInductionTransaction(ualAccount.accountName, "ahab", [
-                "pip",
-                "egeon",
-            ]);
+            const { transaction: inductionTrx } =
+                initializeInductionTransaction(ualAccount.accountName, "ahab", [
+                    "pip",
+                    "egeon",
+                ]);
 
             // extract the actions from the transaction
             const { actions } = inductionTrx;

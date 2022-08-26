@@ -15,16 +15,12 @@ interface Props {
 
 export const FundsAvailableCTA = ({ account }: Props) => {
     const [ualAccount] = useUALAccount();
-    const { data: profile, isError: isErrorProfile } = useMemberByAccountName(
-        account
-    );
-    const { data: accountBalance, isError: isErrorBalance } = useAccountBalance(
-        account
-    );
-    const {
-        data: distributionsResult,
-        isError: isErrorDistributions,
-    } = useAvailableDistributions(account);
+    const { data: profile, isError: isErrorProfile } =
+        useMemberByAccountName(account);
+    const { data: accountBalance, isError: isErrorBalance } =
+        useAccountBalance(account);
+    const { data: distributionsResult, isError: isErrorDistributions } =
+        useAvailableDistributions(account);
 
     if (isErrorProfile || isErrorBalance || isErrorDistributions) return null;
 

@@ -76,11 +76,8 @@ const JoinMeetingButton = ({
     const [roundMeetingLink, setRoundMeetingLink] = useState("");
     const [failedToDecrypt, setFailedToDecrypt] = useState(false);
 
-    const {
-        encryptionPassword,
-        isPasswordNotSet,
-        isPasswordSetNotPresent,
-    } = useEncryptionPassword();
+    const { encryptionPassword, isPasswordNotSet, isPasswordSetNotPresent } =
+        useEncryptionPassword();
 
     useEffect(() => {
         decryptMeetingLink();

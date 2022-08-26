@@ -20,11 +20,10 @@ export const CompletedRoundSegment = ({
 }: CompletedRoundSegmentProps) => {
     const { data } = useParticipantsInMyCompletedRound(roundIndex);
 
-    const {
-        data: participantsMemberData,
-    } = useMembersByAccountNamesAsMemberNFTs(
-        data?.participants.map((participant) => participant.account)
-    );
+    const { data: participantsMemberData } =
+        useMembersByAccountNamesAsMemberNFTs(
+            data?.participants.map((participant) => participant.account)
+        );
 
     if (!participantsMemberData || !participantsMemberData.length) return null;
 

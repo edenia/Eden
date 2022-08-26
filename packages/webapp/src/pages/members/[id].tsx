@@ -18,9 +18,11 @@ import { FundsAvailableCTA } from "members/components";
 
 export const MemberPage = () => {
     const router = useRouter();
-    const { data: member, isLoading, isError } = useMemberByAccountName(
-        router.query.id as string
-    );
+    const {
+        data: member,
+        isLoading,
+        isError,
+    } = useMemberByAccountName(router.query.id as string);
 
     if (isLoading) {
         return (

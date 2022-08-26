@@ -60,14 +60,10 @@ export const ParticipationCard = ({ election }: Props) => {
         refetchIntervalInBackground: true,
     });
 
-    const [
-        showConfirmParticipationModal,
-        setShowConfirmParticipationModal,
-    ] = useState(false);
-    const [
-        showCancelParticipationModal,
-        setShowCancelParticipationModal,
-    ] = useState(false);
+    const [showConfirmParticipationModal, setShowConfirmParticipationModal] =
+        useState(false);
+    const [showCancelParticipationModal, setShowCancelParticipationModal] =
+        useState(false);
 
     if (!election) {
         return null;
@@ -90,9 +86,8 @@ export const ParticipationCard = ({ election }: Props) => {
 
     const electionDate = electionDates.startDateTime.format("LL");
     const electionStartTime = electionDates.startDateTime.format("LT z");
-    const electionParticipationLimitTime = electionDates.participationTimeLimit.format(
-        "LLL z"
-    );
+    const electionParticipationLimitTime =
+        electionDates.participationTimeLimit.format("LLL z");
 
     const isPastElectionParticipationTimeLimit = dayjs().isAfter(
         electionDates.participationTimeLimit
@@ -278,10 +273,8 @@ const ConfirmParticipationModal = ({ isOpen, close, deadline }: ModalProps) => {
     const [ualAccount] = useUALAccount();
     const queryClient = useQueryClient();
     const [step, setStep] = useState(ParticipationStep.ConfirmParticipation);
-    const {
-        encryptionPassword,
-        updateEncryptionPassword,
-    } = useEncryptionPassword();
+    const { encryptionPassword, updateEncryptionPassword } =
+        useEncryptionPassword();
 
     const onSubmit = async (
         setEncryptionPasswordAction?: SetEncryptionPasswordAction

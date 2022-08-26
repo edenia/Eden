@@ -72,7 +72,6 @@ export const INDUCTION_PENDING_ENDORSEMENTS_MOCK: Induction = {
     },
 };
 
-export const ENDORSEMENTS_PENDING_LAST_MOCK: Endorsement[] = ENDORSEMENTS_NEW_MOCK.map(
-    (endorsement) => ({ ...endorsement })
-);
+export const ENDORSEMENTS_PENDING_LAST_MOCK: Endorsement[] =
+    ENDORSEMENTS_NEW_MOCK.map((endorsement) => ({ ...endorsement }));
 ENDORSEMENTS_PENDING_LAST_MOCK[0].endorsed = 1;

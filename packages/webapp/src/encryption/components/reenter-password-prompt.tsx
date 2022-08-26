@@ -23,10 +23,8 @@ export const ReenterPasswordPrompt = ({
     const [ualAccount] = useUALAccount();
     const [forgotPasswordMode, setForgotPasswordMode] = useState(false);
     const queryClient = useQueryClient();
-    const {
-        encryptionPassword,
-        updateEncryptionPassword,
-    } = useEncryptionPassword();
+    const { encryptionPassword, updateEncryptionPassword } =
+        useEncryptionPassword();
 
     const onSubmit = (publicKey: string, privateKey: string) => {
         try {

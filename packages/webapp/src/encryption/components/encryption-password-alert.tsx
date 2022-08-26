@@ -13,11 +13,8 @@ export const EncryptionPasswordAlert = ({
     promptSetupEncryptionKey,
 }: Props) => {
     const { show } = usePasswordModal();
-    const {
-        encryptionPassword,
-        isPasswordNotSet,
-        isPasswordSetNotPresent,
-    } = useEncryptionPassword();
+    const { encryptionPassword, isPasswordNotSet, isPasswordSetNotPresent } =
+        useEncryptionPassword();
 
     const [ualAccount] = useUALAccount();
     const { data: currentMember } = useCurrentMember();

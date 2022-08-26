@@ -66,9 +66,8 @@ interface Props {
 export const ZoomOauthPage = ({ isZoomLinked, oauthState }: Props) => {
     const [ualAccount, _, ualShowModal] = useUALAccount();
     const { data: currentMember } = useCurrentMember();
-    const [_zoomLinkedAccount, setZoomLinkedAccount] = useZoomLinkedAccount(
-        false
-    );
+    const [_zoomLinkedAccount, setZoomLinkedAccount] =
+        useZoomLinkedAccount(false);
     const router = useRouter();
     const [redirectMessage, setRedirectMessage] = useState("");
 
@@ -124,9 +123,8 @@ export default ZoomOauthPage;
 
 // Use this component to easily test the Zoom integration
 const ZoomTestContainer = ({ ualAccount }: any) => {
-    const [zoomLinkedAccount, setZoomLinkedAccount] = useZoomLinkedAccount(
-        false
-    );
+    const [zoomLinkedAccount, setZoomLinkedAccount] =
+        useZoomLinkedAccount(false);
 
     const doGenerateZoomMeetingLink = async () => {
         try {

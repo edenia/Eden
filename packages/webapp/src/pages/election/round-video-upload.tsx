@@ -139,50 +139,52 @@ const RoundVideoUploadList = () => {
         });
     };
 
-    const submitElectionRoundVideo = (roundIndex: number) => async (
-        videoFile: File
-    ) => {
-        resetErrorMessage();
-        try {
-            setVideoSubmissionPhase("uploading");
-            const videoHash = await uploadToIpfs(videoFile);
+    const submitElectionRoundVideo =
+        (roundIndex: number) => async (videoFile: File) => {
+            resetErrorMessage();
+            try {
+                setVideoSubmissionPhase("uploading");
+                const videoHash = await uploadToIpfs(videoFile);
 
-            const authorizerAccount = ualAccount.accountName;
-            const transaction = setElectionRoundVideo(
-                authorizerAccount,
-                roundIndex,
-                videoHash
-            );
-            console.info(transaction);
-            setVideoSubmissionPhase("signing");
-            const signedTrx = await ualAccount.signTransaction(transaction, {
-                broadcast: false,
-                expireSeconds: 1 * 60 * 60, // 1 hour (max expiration)
-            });
-            console.info("electvideo trx", signedTrx);
+                const authorizerAccount = ualAccount.accountName;
+                const transaction = setElectionRoundVideo(
+                    authorizerAccount,
+                    roundIndex,
+                    videoHash
+                );
+                console.info(transaction);
+                setVideoSubmissionPhase("signing");
+                const signedTrx = await ualAccount.signTransaction(
+                    transaction,
+                    {
+                        broadcast: false,
+                        expireSeconds: 1 * 60 * 60, // 1 hour (max expiration)
+                    }
+                );
+                console.info("electvideo trx", signedTrx);
 
-            setVideoSubmissionPhase("finishing");
-            await uploadIpfsFileWithTransaction(
-                signedTrx,
-                videoHash,
-                videoFile
-            );
+                setVideoSubmissionPhase("finishing");
+                await uploadIpfsFileWithTransaction(
+                    signedTrx,
+                    videoHash,
+                    videoFile
+                );
 
-            setVideoSubmissionPhase(undefined);
-            setUploadCompleteMessage({
-                roundIndex,
-                message: "Election video uploaded successfully!",
-            });
-        } catch (error) {
-            onError(error as Error, "Error uploading election round video");
-            setVideoSubmissionPhase(undefined);
-            setUploadErrorMessage({
-                roundIndex,
-                message:
-                    "There was an error uploading your video. Please try again.",
-            });
-        }
-    };
+                setVideoSubmissionPhase(undefined);
+                setUploadCompleteMessage({
+                    roundIndex,
+                    message: "Election video uploaded successfully!",
+                });
+            } catch (error) {
+                onError(error as Error, "Error uploading election round video");
+                setVideoSubmissionPhase(undefined);
+                setUploadErrorMessage({
+                    roundIndex,
+                    message:
+                        "There was an error uploading your video. Please try again.",
+                });
+            }
+        };
 
     return (
         <>

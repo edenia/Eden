@@ -25,10 +25,8 @@ export const InductionDetailsPage = () => {
 
     const { isLoading: isLoadingCommunityState } = useIsCommunityActive();
 
-    const {
-        data,
-        isLoading: isLoadingEndorsements,
-    } = useGetInductionWithEndorsements(inductionId as string);
+    const { data, isLoading: isLoadingEndorsements } =
+        useGetInductionWithEndorsements(inductionId as string);
 
     const isLoading = isLoadingEndorsements || isLoadingCommunityState;
 
