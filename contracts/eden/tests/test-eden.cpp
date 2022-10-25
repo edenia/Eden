@@ -495,7 +495,7 @@ TEST_CASE("board resignation")
    t.pip.act<actions::resign>("pip"_n);
 }
 
-TEST_CASE("expel member")
+TEST_CASE("remove member")
 {
    eden_tester t;
    t.genesis();
