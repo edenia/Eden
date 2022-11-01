@@ -35,7 +35,7 @@ spec:
         name: box
       spec:
         accessModes: ["ReadWriteOnce"]
-        storageClassName: eden-storage
+        storageClassName: eden-storage-probe-prod
         resources:
           requests:
             storage: 50Gi

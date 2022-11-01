@@ -576,9 +576,9 @@ jobs:
             - name: Deploy kubernetes files
               uses: steebchen/kubectl@v1.1.0
               env:
-                  KUBE_CONFIG_DATA: ${{ secrets.PDN_KUBE_CONFIG_DATA }}
+                  KUBE_CONFIG_DATA: ${{ secrets.DEV_KUBE_CONFIG_DATA }}
                   ENVIRONMENT: pdn
-                  NAMESPACE: eden
+                  NAMESPACE: eden-probe-production
                   VERSION_DISTRIBUTE: ${{secrets.VERSION_DISTRIBUTE}}
                   VERSION_WATCHER: ${{secrets.VERSION_WATCHER}}
                   PDN_EOS_API_ENDPOINT: ${{secrets.PDN_EOS_API_ENDPOINT}}
